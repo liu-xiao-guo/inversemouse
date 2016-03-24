@@ -12,26 +12,25 @@ MainView {
     // Note! applicationName needs to match the "name" field of the click manifest
     applicationName: "inversemouse.liu-xiao-guo"
 
-    /*
-     This property enables the application to change orientation
-     when the device is rotated. The default is false.
-    */
-    //automaticOrientation: true
-
-
     width: units.gu(60)
     height: units.gu(85)
 
     Page {
         title: i18n.tr("inversemouse")
 
-        Button {
-            id: button
-            text: "Press me"
-            onClicked: {
-                var component = Qt.createComponent("Popup.qml");
-                var obj = component.create(parent);
-                obj.visible = true;
+        Rectangle {
+            width: parent.width
+            height: parent.height/2
+            border.color: "red"
+
+            Button {
+                id: button
+                text: "Press me"
+                onClicked: {
+                    var component = Qt.createComponent("Popup.qml");
+                    var obj = component.createObject(parent);
+                    obj.visible = true;
+                }
             }
         }
     }
